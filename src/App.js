@@ -2,18 +2,39 @@ import { useState } from "react";
 import'./App.css'
 
 function App() {
-  const bgcolor = ['red','green','blue']
- const [colovar , setcolor] = useState(0)
-  return (
-   <>
-   <button  //리액트 데이터 넣어주는 {} 하이픈 있으면 안되고 붙어있어야 해서 안 쓴다
-   onClick={()=>{
-    setcolor((colovar + 1) % bgcolor.length)
+  const styledata = {
+   bodystyle : [
+            ["red","빨강","첫번째내용" ],
+           ["green","초록","두번째내용"] ,
+            ["blue","파랑","세번째내용"],
+            ["pink","핑크","네번째내용"]
+          ] , ///// 하나의 오브젝트로 만들어주는게 빠르고 편하다
+   
+  }
+  
+const[bgcolor, setbgcolor] = useState(0)
+  
+document.body.style.backgroundColor = styledata.bodystyle[bgcolor][0] 
+
+    return (
+   <div style={{textAlign : "center" , marginTop : "100px"}}>
+       {
+     styledata.bodystyle.map((a, v)=>{ //앞 자리 값 뒷자리 인덱스
+       return(     
+       <>   <button key={`btn ${v}`} onClick={()=>{setbgcolor(v)}}> {a[1]}</button>
+          {bgcolor == v && <div>{`${a[2]}`}</div>}
+         
+          </>
+        )
+      
+
+     })
     
-   }}>
-    {document.body.classList = bgcolor[colovar]}</button>
-   </>
-  );
-}
+     }
+
+     </div>
+      
+    )
+ }
 
 export default App;
