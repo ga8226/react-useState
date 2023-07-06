@@ -4,25 +4,25 @@ import'./App.css'
 function App() {
   const styledata = {
    bodystyle : [
-            ["red","빨강","첫번째내용" ],
-           ["green","초록","두번째내용"] ,
-            ["blue","파랑","세번째내용"],
-            ["pink","핑크","네번째내용"]
+            ["mark","./img/M.jpg","첫번째내용" ],
+           ["j","./img/J.jpg","두번째내용"] ,
+            ["k","./img/K2.jpg","세번째내용"],
+            ["l","./img/L.jpg","네번째내용"]
           ] , ///// 하나의 오브젝트로 만들어주는게 빠르고 편하다
    
   }
   
-const[bgcolor, setbgcolor] = useState(0)
+const[bgimg, setbgimg] = useState(0)
   
-document.body.style.backgroundColor = styledata.bodystyle[bgcolor][0] 
+document.body.style.backgroundImage = styledata.bodystyle[bgimg][1] 
 
     return (
    <div style={{textAlign : "center" , marginTop : "100px"}}>
        {
      styledata.bodystyle.map((a, v)=>{ //앞 자리 값 뒷자리 인덱스
        return(     
-       <>   <button key={`btn ${v}`} onClick={()=>{setbgcolor(v)}}> {a[1]}</button>
-          {bgcolor == v && <div>{`${a[2]}`}</div>}
+       <>   <button key={`btn ${v}`} onClick={()=>{setbgimg(v)}}>{a[0]}</button>
+          {bgimg == v && <img src={a[1]} alt="" style={{height : "100vh" , with : "100%"}}/>}
          
           </>
         )
